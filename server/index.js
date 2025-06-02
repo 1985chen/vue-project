@@ -31,6 +31,7 @@ if (process.env.NODE_ENV !== 'production') {
     format: winston.format.simple()
   }));
 }
+console.log(88);
 
 // 配置
 const config = {
@@ -38,7 +39,7 @@ const config = {
   staticPort: process.env.STATIC_PORT || 8080,
   staticPath: path.join(__dirname, '../dist')
 };
-console.log(config,process.env,'config')
+// console.log(config,process.env,'config')
 
 // 创建应用实例
 const app = new Koa();
@@ -79,6 +80,7 @@ router.get('/api/message', (ctx) => {
 
 // 保存用户名接口
 router.post('/api/save-name', (ctx) => {
+  console.log(ctx.request.body,'ctx.request.body')
   const { name } = ctx.request.body;
 
   if (!name) {
