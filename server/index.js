@@ -77,6 +77,24 @@ router.get('/api/message', (ctx) => {
   ctx.body = { message: 'Hello from Koa!' };
 });
 
+// 保存用户名接口
+router.post('/api/save-name', (ctx) => {
+  const { name } = ctx.request.body;
+
+  if (!name) {
+    ctx.status = 400;
+    ctx.body = { message: '用户名不能为空' };
+    return;
+  }
+
+  // 这里可以添加保存到数据库的逻辑
+  // 现在只是返回成功消息
+  ctx.body = {
+    message: `用户名 ${name} 保存成功！`,
+    name: name
+  };
+});
+
 // 注册路由
 app.use(router.routes()).use(router.allowedMethods());
 
